@@ -18,4 +18,13 @@ where
 
   GET_Quantity_Query: `SELECT  inventory_quantity
 FROM invoice.inventory where item_id =$1;`,
+
+  INSERT_Header_Query: `INSERT INTO invoice.inheader
+(header_code, created_on)
+VALUES($1, $2) RETURNING *;
+`,
+
+  INSERT_Details_Query: `INSERT INTO invoice.indetails
+(header_id, details_name, details_price, detail_amount, quantity)
+VALUES($1, $2, $3, $4, $5) RETURNING *;`,
 };
