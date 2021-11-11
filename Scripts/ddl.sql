@@ -42,18 +42,25 @@ CREATE TABLE invoice.INheader(
 
 
 
-CREATE TABLE invoice.indetails(
-   details_id INT GENERATED ALWAYS AS IDENTITY,
-   header_id INT,
-   details_name varchar(20) not null,
-   details_price float,
-   quantity INT,
-   detail_amount INT,
-   PRIMARY KEY(details_id),
-   CONSTRAINT fk_inheader
-      FOREIGN KEY(header_id) 
-	  REFERENCES invoice.inheader(header_id)
+-- invoice.indetails definition
+
+-- Drop table
+
+-- DROP TABLE invoice.indetails;
+
+CREATE TABLE invoice.indetails (
+	details_id int4 NOT NULL GENERATED ALWAYS AS IDENTITY,
+	header_id int4 NULL,
+	details_name varchar(20) NOT NULL,
+	details_price float8 NULL,
+	detail_amount int4 NULL,
+	quantity int4 NULL,
+	CONSTRAINT indetails_pkey PRIMARY KEY (details_id)
 );
 
+
+-- invoice.indetails foreign keys
+
+ALTER TABLE invoice.indetails ADD CONSTRAINT fk_inheader FOREIGN KEY (header_id) REFERENCES invoice.inheader(header_id) ON DELETE CASCADE;
 
 
