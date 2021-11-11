@@ -1,17 +1,17 @@
 # Invoices
-# Simple invoice system for Employees and Managers
+## Simple invoice system for Employees and Managers
 The idea of this application to manage sales and show invoices :
 - Add  new items in inventory
 - Create invoices
 
-# Requirements:
+## Requirements:
 1. node v12.12.0 or higher.
 2. PostgreSQL v21.2.3 or higher
 3. you have to install dependencies in your enviroment:
 ```
 npm install
 ```
-# Usage:
+## Usage:
 - To create database go to ``/scripts/ddl.sql`` and run it in PostgreSQL 
 - go to project directory atind run:
 ```
