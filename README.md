@@ -1,9 +1,8 @@
 # Invoices
 # Simple invoice system for Employees and Managers
 The idea of this application to manage sales and show invoices :
-- Add new items in inventory
-- Add sales to invoice
-- Show all details about invoice 
+- Add  new items in inventory
+- Create invoices
 
 # Requirements:
 1. node v12.12.0 or higher.
@@ -13,7 +12,8 @@ The idea of this application to manage sales and show invoices :
 npm install
 ```
 # Usage:
-- go to project directory and run:
+- To create database go to ``/scripts/ddl.sql`` and run it in PostgreSQL 
+- go to project directory atind run:
 ```
 node server.js
 ```
