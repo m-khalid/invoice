@@ -16,3 +16,17 @@ exports.addHeader = async () => {
     return false;
   }
 };
+
+exports.GetByHeader = async (ID) => {
+  var QueryText = DB_query.querylist.GET_Invoice_Query;
+  var result = await pool.exQuery(QueryText, [ID]);
+  return result.rows;
+};
+
+exports.DeleteByHeader = async (ID) => {
+  var QueryText = DB_query.querylist.DELETE_Invoice_Query;
+  if (await pool.exQuery(QueryText, [ID])) {
+    return true;
+  }
+  return false;
+};

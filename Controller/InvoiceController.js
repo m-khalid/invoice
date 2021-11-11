@@ -1,17 +1,37 @@
 var InvoiceDeatails = require("./DetailsController");
-
-exports.DisplayInvoice = (req, res) => {};
+var InvoiceHeader = require("./HeaderController");
 
 exports.addInvoice = async (req, res) => {
-  var name = req.body.name;
-  var price = req.body.price;
-  var amount = req.body.amount;
-  var quantity = req.body.quantity;
-  console.log(name, price, amount, quantity);
-  var result = await InvoiceDeatails.addDetails(name, price, amount, quantity);
+  var result = await InvoiceDeatails.addDetails(req.body);
   if (result) {
-    res.status(201).send(result);
-  } else {
-    res.status(500).send({ error: "failed  to save Invoice" });
+    res.status(201).send({ data: result });
   }
+  res.status(500).send({ error: "failed  to save Invoice" });
+};
+
+exports.GetInvoice = async (req, res) => {
+  var Id = req.params.id;
+  var result = await InvoiceHeader.GetByHeader(Id);
+  if (result) {
+    res.status(201).send({ data: result });
+  }
+  res.status(500).send({ error: "failed  to save Invoice" });
+};
+
+exports.DeleteInvoice = async (req, res) => {
+  var Id = req.params.id;
+  var result = await InvoiceHeader.DeleteByHeader(Id);
+  if (result) {
+    res.status(201).send({ msg: "Success" });
+  }
+  res.status(500).send({ error: "failed  to Delete Invoice" });
+};
+
+exports.UpadteInvoice = async (req, res) => {
+  var Id = req.params.id;
+  var result = await InvoiceDeatails.UpdateDetails(Id, req.body);
+  if (result) {
+    res.status(201).send({ msg: "Success" });
+  }
+  res.status(500).send({ error: "failed  to Update Invoice" });
 };

@@ -17,7 +17,7 @@ exports.addInventory = async (req, res) => {
 
 exports.UpdateInventory = async (req, res) => {
   try {
-    var itemId = req.body.id;
+    var itemId = req.params.id;
     var Quantity = req.body.quantity;
     var query_quantity = DB_query.querylist.GET_Quantity_Query;
     var result = await DB_connection.exQuery(query_quantity, [itemId]);
@@ -30,4 +30,23 @@ exports.UpdateInventory = async (req, res) => {
     console.log(err);
     return res.status(500).send({ error: "failed  to updaete inventory" });
   }
+};
+
+exports.deleteInventory = async (req, res) => {
+  try {
+    var Id = req.params.id;
+    var Query = DB_query.querylist.Delete_Inventory_Query;
+    await DB_connection.exQuery(Query, [Id]);
+    return res.status(201).send({ msg: "Success" });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send({ error: "failed  to updaete inventory" });
+  }
+};
+
+exports.getInventory = async (req, res) => {
+  var Id = req.params.id;
+  var Query = DB_query.querylist.GEt_Inventory_Query;
+  var result = await DB_connection.exQuery(Query, [Id]);
+  return res.status(201).send({ data: result.rows });
 };
