@@ -1,5 +1,5 @@
 # Invoices 
-### in development phase
+## `in development phase`
 ## Simple invoice system for Employees and Managers
 The idea of this application to manage sales and show invoices :
 - Add  new items in inventory
